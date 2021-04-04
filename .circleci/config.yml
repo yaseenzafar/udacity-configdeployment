@@ -1,0 +1,26 @@
+version: 2.1
+# Orchestrate or schedule a set of jobs
+jobs:
+  this_job:
+    docker:
+      - image: circleci/python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+	 fingerprints:
+	  - "c5:03:78:36:6d:89:f2:ad:bd:a4:61:db:48:00:31:7e"
+      - run:
+	  name: Install dependencies
+	  command: |
+		apk add --update ansible
+      - run:
+          name: Configure server
+          command: |
+                ansible-playbook -i inventory.txt main.yml  
+
+workflows:
+  # Name the workflow "welcome"
+  welcome:
+    # Run the welcome/run job in its own container
+    jobs:
+      - this_job 
