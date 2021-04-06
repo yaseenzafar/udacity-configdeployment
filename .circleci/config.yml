@@ -7,15 +7,15 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-	  fingerprints: ["94:8f:63:4d:1a:d5:30:8b:a2:79:45:59:64:79:08:d3"]
+          fingerprints: ["94:8f:63:4d:1a:d5:30:8b:a2:79:45:59:64:79:08:d3"]
       - run:
 	  name: Install dependencies
 	  command: |
-		apk add --update ansible
+	    apk add --update ansible
       - run:
           name: Configure server
           command: |
-                ansible-playbook -i inventory.txt main.yml  
+            ansible-playbook -i inventory.txt main.yml  
 
 workflows:
   # Name the workflow "welcome"
