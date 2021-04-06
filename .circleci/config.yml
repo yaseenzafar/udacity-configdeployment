@@ -9,8 +9,8 @@ jobs:
       - add_ssh_keys:
           fingerprints: ["94:8f:63:4d:1a:d5:30:8b:a2:79:45:59:64:79:08:d3"]
       - run:
-	  name: Install dependencies
-	  command: |
+          name: Install dependencies
+          command: |
 	    apk add --update ansible
       - run:
           name: Configure server
